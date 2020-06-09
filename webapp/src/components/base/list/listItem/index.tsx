@@ -6,8 +6,8 @@ const ListItem = (props: any) => {
         <li className="list-group-item">
             {
                 props.withLinks 
-                    ? <Link to={`/${props.item.id}`} >{props.item.label}</Link>
-                    : props.item.label
+                    ? <Link to={`/${props.item.id}`} >{props.item.name}</Link>
+                    : props.item.name
             }
         </li>
     );

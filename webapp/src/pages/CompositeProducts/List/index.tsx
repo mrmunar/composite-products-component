@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux'
 
-import { getProducts } from '../../../redux/actions/products';
+import { getCompositeProducts } from '../../../redux/actions/compositeProducts';
 import Button from '../../../components/base/form/button';
 import Title from '../../../components/base/title';
 import CompositItemList from '../../../components/base/list';
@@ -16,17 +16,8 @@ const List = () => {
 
     //get composite products on render
     useEffect(() => {
-        dispatch(getProducts());
+        dispatch(getCompositeProducts());
     });
-
-    const transformForList = (data: any) => {
-        return data.map((item: any) => {
-            return {
-                id: item.id,
-                label: item.name
-            }
-        });
-    }
 
     return (
         <div className="text-left">
@@ -34,7 +25,7 @@ const List = () => {
             <div className="mb-3">
                 <Button label="Create" />
             </div>
-            <CompositItemList withLinks items={transformForList(dummyData)} />
+            <CompositItemList withLinks items={dummyData} />
         </div>
     );
 }

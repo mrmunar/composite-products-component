@@ -4,7 +4,7 @@ import './index.css';
 function Main(props: any) {
     return (
         <div className="main-container">
-            <div className="row justify-content-md-center">
+            <div className="row justify-content-center">
                 <div className="col-lg-6">
                     {props.children}
                 </div>

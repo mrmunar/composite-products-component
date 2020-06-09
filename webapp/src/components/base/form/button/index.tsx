@@ -2,7 +2,12 @@ import React from 'react';
 
 const Button = (props: any) => {
     return (
-    <button onClick={() => props.onClick?.()}>{props.label}</button>
+        <button
+            onClick={() => props.onClick?.()}
+            className={props.className}
+        >
+            {props.label}
+        </button>
     );
 }
 

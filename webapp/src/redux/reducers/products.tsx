@@ -12,8 +12,6 @@ const INIT_STATE = {
 export default (state = INIT_STATE, action: any) => {
     let newState = { ...state };
 
-    console.log('reducer action', action);
-
     switch (action.type) {
         case GET_PRODUCTS_REQUEST:
             newState.isLoading = true;

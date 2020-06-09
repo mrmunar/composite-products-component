@@ -30,8 +30,10 @@ const GenerateRecursiveComponentForm = (props: any) => {
     }
 
     useEffect(() => {
-        data.components = components;
-        props.onChange(data);
+        if (Object.keys(components[0]).length > 0) {
+            data.components = components;
+            props.onChange(data);
+        }
     }, [components]);
 
     useEffect(() => {
@@ -46,15 +48,17 @@ const GenerateRecursiveComponentForm = (props: any) => {
 
     const handleOnSelectChange = (e: any, key: number) => {
         data.components[key].productId = e.target.value;
+        props.onChange(data);
 
     }
 
     const handleOnNumberChange = (e: any, key: number) => {
         data.components[key].quantity = e.target.value;
+        props.onChange(data);
     }
 
     return (
-        <div className="m-3">
+        <div className="m-2 p-3 card">
             {components.length > 0 ? components.map((item: any, key: number) => {
                 if (item.type === 'PRODUCT') {
                     return (
@@ -71,7 +75,12 @@ const GenerateRecursiveComponentForm = (props: any) => {
                         <Fragment key={`group-${props.level}-${key}`}>
                             <label>
                                 <div>Group Label</div>
-                                <input key={`groupname-${props.level}-${key}`} type="text" onChange={(e) => handleOnNameChange(e)} />
+                                <input
+                                    key={`groupname-${props.level}-${key}`}
+                                    type="text"
+                                    onChange={(e) => handleOnNameChange(e)}
+                                    className="form-control"
+                                />
                             </label>
                             <GenerateRecursiveComponentForm
                                 key={`component-${props.level}-${key}`}

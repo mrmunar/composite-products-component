@@ -8,7 +8,7 @@ interface Item {
 const Select = (props: any) => {
     return (
         <select
-            style={{ width: '100%' }}
+            className="custom-select"
             defaultValue={props.defaultValue}
             onChange={(e: any) => props.onChange(e)}
         >

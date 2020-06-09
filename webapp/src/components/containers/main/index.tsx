@@ -6,7 +6,9 @@ function Main(props: any) {
         <div className="main-container">
             <div className="row justify-content-center">
                 <div className="col-lg-6">
-                    {props.children}
+                    <div className="text-left">
+                        {props.children}
+                    </div>
                 </div>
             </div>
         </div>

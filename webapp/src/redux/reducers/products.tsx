@@ -5,7 +5,7 @@ import {
 } from '../../constants/ActionTypes';
 
 const INIT_STATE = {
-    products: [],
+    records: [],
     isLoading: false
 };
 
@@ -19,7 +19,7 @@ export default (state = INIT_STATE, action: any) => {
             newState.isLoading = true;
             break;
         case GET_PRODUCTS_SUCCESS:
-            newState.products = action.products;
+            newState.records = action.products;
             newState.isLoading = false;
             break;
         case GET_PRODUCTS_FAILED:

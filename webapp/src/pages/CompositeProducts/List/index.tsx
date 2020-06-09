@@ -1,7 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux'
 
-function List() {
+import { getProducts } from '../../../redux/actions/products';
+
+const List = () => {
+    const dispatch = useDispatch();
+
+    //get composite products on render
+    useEffect(() => {
+        dispatch(getProducts());
+    });
+
     return (
+        // add button
+        // list
         <div>list</div>
     );
 }

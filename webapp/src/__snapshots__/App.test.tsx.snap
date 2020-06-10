@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should take a snapshot 1`] = `
+<body>
+  <div>
+    <div
+      class="App"
+    >
+      <div
+        class="main-container"
+      >
+        <div
+          class="row justify-content-center"
+        >
+          <div
+            class="col-lg-6"
+          >
+            <div
+              class="text-left"
+            >
+              <div
+                class="text-left"
+              >
+                <h3>
+                  List Composite Products
+                </h3>
+                <div
+                  class="mb-3"
+                >
+                  <button
+                    class="btn btn-info"
+                    data-testid="button"
+                  >
+                    Create
+                  </button>
+                </div>
+                Loading...
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+`;

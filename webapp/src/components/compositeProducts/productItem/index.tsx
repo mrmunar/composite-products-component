@@ -50,7 +50,7 @@ const ProductItem = (props: any) => {
                             defaultValue={props.defaultQuantity}
                             onChange={(e: any) => props.onNumberChange(e)}
                             className="form-control"
-                            min="0"
+                            min="1"
                         />
                     </div>
                     <div className="col-md-1 text-right">

@@ -6,6 +6,7 @@ const Button = (props: any) => {
         <button
             onClick={() => props.onClick?.()}
             className={props.className}
+            data-testid="button"
         >
             {props.label}
         </button>

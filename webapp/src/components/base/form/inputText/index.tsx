@@ -13,6 +13,7 @@ const InputText = (props: any) => {
             value={value}
             onChange={(e: any) => handleOnChange(e)}
             className="form-control"
+            data-testid="input-text"
         />
     );
 }

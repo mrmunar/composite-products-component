@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should take a snapshot 1`] = `
+<body>
+  <div>
+    <select
+      class="custom-select"
+      data-testid="select"
+    >
+      <option
+        value=""
+      />
+      <option
+        value="1"
+      >
+        item1
+      </option>
+      <option
+        value="2"
+      >
+        item2
+      </option>
+      <option
+        value="3"
+      >
+        item3
+      </option>
+    </select>
+  </div>
+</body>
+`;

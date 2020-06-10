@@ -7,8 +7,7 @@ import {
 import { Provider } from "react-redux";
 
 import Container from './components/containers/main';
-import AddCompositeProducts from './pages/CompositeProducts/Add';
-import EditCompositeProducts from './pages/CompositeProducts/Edit';
+import AddEditCompositeProducts from './pages/CompositeProducts/AddEdit';
 import ListCompositeProducts from './pages/CompositeProducts/List';
 import store from './redux/store';
 
@@ -21,8 +20,8 @@ function App() {
         <Container>
           <Router>
             <Switch>
-              <Route path="/add" component={AddCompositeProducts} />
-              <Route path="/:id" component={EditCompositeProducts} />
+              <Route path="/add" component={AddEditCompositeProducts} />
+              <Route path="/:id" component={AddEditCompositeProducts} />
               <Route path="/" component={ListCompositeProducts} />
             </Switch>
           </Router>

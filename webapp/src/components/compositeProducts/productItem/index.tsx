@@ -12,7 +12,7 @@ const ProductItem = (props: any) => {
         return state.products.records
     });
     const [isValid, setIsValid] = useState(true);
-    const [selectDefaultValue, setSelectDefaultValue] = useState('');
+    const [selectDefaultValue, setSelectDefaultValue] = useState(props.defaultItemValue);
 
     useEffect(() => {
         if (!selectDefaultValue) {
@@ -32,38 +32,40 @@ const ProductItem = (props: any) => {
     }
 
     return (
+        products.length > 0 ?
         <div className="container">
             <div>Product</div>
-            <div className="row">
-                <div className="col-md-8">
-                    <Select
-                        data={products}
-                        defaultValue={props.defaultValue}
-                        defaultLabel="(Select a Product)"
-                        onChange={(e: any) => onSelectChange(e)}
-                    />
+                <div className="row">
+                    <div className="col-md-8">
+                        <Select
+                            data={products}
+                            defaultValue={props.defaultItemValue}
+                            defaultLabel="(Select a Product)"
+                            onChange={(e: any) => onSelectChange(e)}
+                        />
+                    </div>
+                    <div className="col-md-2 text-right">
+                        <input
+                            type="number"
+                            defaultValue={props.defaultQuantity}
+                            onChange={(e: any) => props.onNumberChange(e)}
+                            className="form-control"
+                            min="0"
+                        />
+                    </div>
+                    <div className="col-md-1 text-right">
+                        <Button
+                            onClick={() => props.onProductDelete()}
+                            label="X"
+                            className="btn btn-danger" />
+                    </div>
                 </div>
-                <div className="col-md-2 text-right">
-                    <input
-                        type="number"
-                        defaultValue={props.defaultQuantity}
-                        onChange={(e: any) => props.onNumberChange(e)}
-                        className="form-control"
-                    />
-                </div>
-                <div className="col-md-1 text-right">
-                    <Button
-                        onClick={() => props.onProductDelete()}
-                        label="X"
-                        className="btn btn-danger" />
-                </div>
-            </div>
             <div className="row">
                 <div className="col-12">
                     <ValidationMessage valid={isValid} message="Please choose a Product" />
                 </div>
             </div>
-        </div>
+        </div> : null
     );
 }
 

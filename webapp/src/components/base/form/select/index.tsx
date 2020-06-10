@@ -12,11 +12,12 @@ const Select = (props: any) => {
             defaultValue={props.defaultValue}
             onChange={(e: any) => props.onChange(e)}
         >
-            <option value="">{props.defaultLabel}</option>
+            <option value="" selected={props.defaultValue === ''}>{props.defaultLabel}</option>
             {props.data.map((item: Item) => {
                 return <option
                     key={`${item.id}-${item.name}`}
                     value={item.id}
+                    selected={props.defaultValue === item.id}
                 >
                     {item.name}
                 </option>

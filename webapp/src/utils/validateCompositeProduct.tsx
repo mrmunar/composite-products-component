@@ -3,7 +3,6 @@ export const validateCompositeProduct = (currentNode: any): any => {
         return true;
     } else {
         let result = true;
-        console.log('currentNode.components', currentNode.components.length);
 
         for (let item of currentNode.components) {
             if (item && item.productId === '') {

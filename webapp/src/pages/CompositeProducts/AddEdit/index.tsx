@@ -3,28 +3,36 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import GenerateRecursiveComponentForm from '../../../components/compositeProducts/generateRecursiveComponentForm';
-import { addCompositeProducts } from '../../../redux/actions/compositeProducts';
+import { 
+    addCompositeProducts, 
+    getCompositeProduct, 
+    editCompositeProduct
+ } from '../../../redux/actions/compositeProducts';
 import { validateCompositeProduct } from '../../../utils/validateCompositeProduct';
 import ValidationMessage from '../../../components/base/form/validation/validationMessage';
 import Button from '../../../components/base/form/button';
 
-function Add() {
+function AddEdit(props: any) {
     const dispatch = useDispatch();
     const history = useHistory();
-    const addStatus = useSelector((state: any) => {
-        return state.compositeProducts.add
+    const loadStatus = useSelector((state: any) => {
+        return state.compositeProducts
+    });
+
+    const compositeProductRecord = useSelector((state: any) => {
+        return state.compositeProducts.record;
     });
 
     const [compositeProductState, setCompositeProductState] = useState({
         name: '',
         components: []
     });
+
     const [compositeProductName, setCompositeProductName] = useState('');
     const [isValid, setIsValid] = useState(true);
 
     const handleSetState = (state: any) => {
         setCompositeProductState(state);
-        console.log('state', state);
         setIsValid(validateCompositeProduct(compositeProductState) && compositeProductName ? true : false);
     }
 
@@ -36,6 +44,19 @@ function Add() {
         compositeProductState.name = compositeProductName;
         setIsValid(compositeProductName ? true : false);
     }, [compositeProductName]);
+
+    useEffect(() => {
+        if (compositeProductRecord) {
+            setCompositeProductState(compositeProductRecord);
+            setCompositeProductName(compositeProductRecord.name);
+        }
+    }, [compositeProductRecord]);
+
+    useEffect(() => {
+        if (props.match.params.id) {
+            dispatch(getCompositeProduct(props.match.params.id));
+        }
+    }, [dispatch]);
     
     const handleOnCancelClick = () => {
         history.push('/');
@@ -43,11 +64,18 @@ function Add() {
 
     const handleOnSaveClick = () => {
         if (isValid) {
-            dispatch(addCompositeProducts(compositeProductState));
+            if (!props.match.params.id) {
+                dispatch(addCompositeProducts(compositeProductState));
+            } else {
+                dispatch(editCompositeProduct(props.match.params.id, compositeProductState));
+            }
         }
+
+        setTimeout(() => history.push('/'), 3000);
     }
 
     return (
+        !loadStatus.isLoading ? 
         <Fragment>
             <div>Name</div>
             <input
@@ -55,6 +83,7 @@ function Add() {
                 onChange={(e) => handleOnNameChange(e)}
                 className="form-control"
                 style={{ width: '50%' }}
+                value={compositeProductName}
             />
             <GenerateRecursiveComponentForm
                 onChange={(compositeProduct: any) => handleSetState(compositeProduct)}
@@ -64,8 +93,8 @@ function Add() {
                 <Button onClick={() => handleOnSaveClick()}label="Save" className="btn save-btn mr-2" />
                 <Button onClick={() => handleOnCancelClick()} label="Cancel" className="btn cancel-btn" />
             </div>
-        </Fragment>
+        </Fragment> : <div>Loading...</div>
     );
 }
 
-export default Add;
+export default AddEdit;

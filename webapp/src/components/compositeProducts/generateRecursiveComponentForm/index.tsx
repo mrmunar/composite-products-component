@@ -2,11 +2,11 @@ import React, { useState, useEffect, Fragment } from 'react';
 import Button from '../../base/form/button';
 import ProductItem from '../productItem';
 import Select from '../../base/form/select';
+import InputText from '../../base/form/inputText';
 
 const GenerateRecursiveComponentForm = (props: any) => {
-    const [data] = useState(props.compositeProduct);
+    const [data, setData] = useState(props.compositeProduct);
     const [components, setComponents] = useState([{}]);
-    const [componentName, setComponentName] = useState('');
 
     const addActionOptions = [
         { id: 'add-product', name: 'Add Product' },
@@ -31,10 +31,10 @@ const GenerateRecursiveComponentForm = (props: any) => {
     const addGroup = () => {
         const item = {
             type: 'GROUP',
-            name: '',
+            label: '',
             components: []
         };
-        
+
         setComponents(
             typeof components[0] !== 'undefined' &&
                 Object.keys(components[0]).length === 0
@@ -43,8 +43,9 @@ const GenerateRecursiveComponentForm = (props: any) => {
         );;
     }
 
-    const handleOnNameChange = (e: any) => {
-        setComponentName(e.target.value);
+    const handleOnNameChange = (e: any, key: number) => {
+        data.components[key].label = e.target.value;
+        props.onChange(data);
     }
 
     useEffect(() => {
@@ -58,9 +59,10 @@ const GenerateRecursiveComponentForm = (props: any) => {
     }, [components]);
 
     useEffect(() => {
-        data.name = componentName;
-        props.onChange(data);
-    }, [componentName]);
+        setData(props.compositeProduct);
+        setComponents(data.components);
+
+    }, [props.compositeProduct, data]);
 
     const handleOnListChange = (compositeProduct: any) => {
         data.components = components;
@@ -72,7 +74,7 @@ const GenerateRecursiveComponentForm = (props: any) => {
         props.onChange(data);
     }
 
-    const handleOnNumberChange = (e: any, key: number) => {
+    const handleOnQuantityChange = (e: any, key: number) => {
         data.components[key].quantity = e.target.value;
         props.onChange(data);
     }
@@ -87,14 +89,14 @@ const GenerateRecursiveComponentForm = (props: any) => {
         e.target.value = '';
     }
 
-    const handleOnProductDelete = (key: number) => {
-        delete components[key];
+    const handleOnDelete = (key: number) => {
+        components.splice(key, 1);
+
         setComponents(components.filter((item: any) => {
-            console.log('item', item);
-            return item != null;
+            return item !== null;
         }));
+
         data.components = components;
-        console.log('components.length', components.length);
         props.onChange(data);
     }
 
@@ -105,25 +107,32 @@ const GenerateRecursiveComponentForm = (props: any) => {
                     return (
                         <ProductItem
                             key={`product-${props.level}-${key}`}
-                            defaultItemValue={item.id}
+                            defaultItemValue={item.productId}
                             defaultQuantity={item.quantity}
                             onSelectChange={(e: any) => handleOnSelectChange(e, key)}
-                            onNumberChange={(e: any) => handleOnNumberChange(e, key)}
-                            onProductDelete={() => handleOnProductDelete(key)}
+                            onNumberChange={(e: any) => handleOnQuantityChange(e, key)}
+                            onProductDelete={() => handleOnDelete(key)}
                         />
                     );
                 } else if (item.type === 'GROUP') {
                     return (
                         <div className="mt-2" key={`group-${props.level}-${key}`}>
-                            <label>
-                                <div>Group Label</div>
-                                <input
-                                    key={`groupname-${props.level}-${key}`}
-                                    type="text"
-                                    onChange={(e) => handleOnNameChange(e)}
-                                    className="form-control"
-                                />
-                            </label>
+                            <div>Group Label</div>
+                            <div className="row">
+                                <div className="col-sm-8 text-left">
+                                    <InputText
+                                        key={`groupname-${props.level}-${key}`}
+                                        value={item.label}
+                                        onChange={(e: any) => handleOnNameChange(e, key)}
+                                    />
+                                </div>
+                                <div className="col-sm-4 text-right">
+                                    <Button
+                                        onClick={() => handleOnDelete(key)}
+                                        label="X"
+                                        className="btn btn-danger" />
+                                </div>
+                            </div>
                             <GenerateRecursiveComponentForm
                                 key={`component-${props.level}-${key}`}
                                 onChange={(compositeProduct: any) => handleOnListChange(compositeProduct)}

@@ -3,7 +3,7 @@ import React from 'react';
 const ValidationMessage = (props: any) => {
     if (!props.valid) {
         return (
-            <div className="p-1 m-2 alert-danger">{props.message}</div>
+            <div className="p-1 m-2 alert alert-danger">{props.message}</div>
         )
     }
     return null;

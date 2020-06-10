@@ -1,13 +1,19 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import Button from '../../base/form/button';
 import ProductItem from '../productItem';
+import Select from '../../base/form/select';
 
 const GenerateRecursiveComponentForm = (props: any) => {
     const [data] = useState(props.compositeProduct);
     const [components, setComponents] = useState([{}]);
     const [componentName, setComponentName] = useState('');
 
-    const handleOnClick = () => {
+    const addActionOptions = [
+        { id: 'add-product', name: 'Add Product' },
+        { id: 'add-group', name: 'Add Group' },
+    ]
+
+    const addProduct = () => {
         const item = {
             type: 'PRODUCT',
             quantity: 0,
@@ -16,7 +22,7 @@ const GenerateRecursiveComponentForm = (props: any) => {
         setComponents(Object.keys(components[0]).length === 0 ? [item] : [...components, item]);
     }
 
-    const handleGroupOnClick = () => {
+    const addGroup = () => {
         const item = {
             type: 'GROUP',
             name: '',
@@ -57,6 +63,16 @@ const GenerateRecursiveComponentForm = (props: any) => {
         props.onChange(data);
     }
 
+    const handleOnSelectActionOptionsChange = (e: any) => {
+        if (e.target.value === 'add-product') {
+            addProduct();
+        } else if (e.target.value === 'add-group') {
+            addGroup();
+        }
+
+        e.target.value = '';
+    }
+
     return (
         <div className="m-2 p-3 card">
             {components.length > 0 ? components.map((item: any, key: number) => {
@@ -72,7 +88,7 @@ const GenerateRecursiveComponentForm = (props: any) => {
                     );
                 } else if (item.type === 'GROUP') {
                     return (
-                        <Fragment key={`group-${props.level}-${key}`}>
+                        <div className="mt-2" key={`group-${props.level}-${key}`}>
                             <label>
                                 <div>Group Label</div>
                                 <input
@@ -88,20 +104,18 @@ const GenerateRecursiveComponentForm = (props: any) => {
                                 compositeProduct={item}
                                 level={`0-${props.level}`}
                             />
-                        </Fragment>
+                        </div>
                     );
                 }
 
             }) : null}
-            <div className="mb-3">
-                <Button label="Add Product" onClick={() => handleOnClick()} />
+            <div className="mb-2 mt-2">
+                <Select
+                    data={addActionOptions}
+                    defaultLabel="(Add +)"
+                    onChange={(e: any) => handleOnSelectActionOptionsChange(e)}
+                />
             </div>
-            <div className="mb-3">
-                <Button label="Add Group" onClick={() => handleGroupOnClick()} />
-            </div>
-            {/* <div className="mb-3">
-                <Button label="Add Group" onClick={() => handleGroupOnClick()} />
-            </div> */}
         </div>
     );
 }

@@ -20,7 +20,6 @@ const List = () => {
     }, [dispatch]);
 
     useEffect(() => {
-        console.log(compositeProducts);
         if (compositeProducts.length > 0) {
             setIsLoading(false);
         }
@@ -30,7 +29,7 @@ const List = () => {
         <div className="text-left">
             <Title>List Composite Products</Title>
             <div className="mb-3">
-                <Button label="Create" onClick={() => history.push('/add')} />
+                <Button label="Create" onClick={() => history.push('/add')} className="btn btn-info" />
             </div>
             {
                 !isLoading

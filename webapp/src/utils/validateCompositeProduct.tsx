@@ -5,17 +5,16 @@ export const validateCompositeProduct = (currentNode: any): any => {
         let result = true;
 
         for (let item of currentNode.components) {
+            console.log('item', item);
             if (item.productId === '') {
-                return false;
+                result = false;
             }
 
             if (item.components && item.components.length > 0) {
                 result = validateCompositeProduct(item);
             }
-
-            return result;
         }
 
-        return true;
+        return result;
     }
 }

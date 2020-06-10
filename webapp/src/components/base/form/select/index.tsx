@@ -12,7 +12,7 @@ const Select = (props: any) => {
             defaultValue={props.defaultValue}
             onChange={(e: any) => props.onChange(e)}
         >
-            <option value="">(Select a Product)</option>
+            <option value="">{props.defaultLabel}</option>
             {props.data.map((item: Item) => {
                 return <option
                     key={`${item.id}-${item.name}`}

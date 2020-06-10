@@ -3,14 +3,14 @@ export const validateCompositeProduct = (currentNode: any): any => {
         return true;
     } else {
         let result = true;
+        console.log('currentNode.components', currentNode.components.length);
 
         for (let item of currentNode.components) {
-            console.log('item', item);
-            if (item.productId === '') {
+            if (item && item.productId === '') {
                 result = false;
             }
 
-            if (item.components && item.components.length > 0) {
+            if (item && item.components && item.components.length > 0) {
                 result = validateCompositeProduct(item);
             }
         }

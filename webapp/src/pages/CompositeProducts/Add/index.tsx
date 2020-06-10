@@ -24,6 +24,7 @@ function Add() {
 
     const handleSetState = (state: any) => {
         setCompositeProductState(state);
+        console.log('state', state);
         setIsValid(validateCompositeProduct(compositeProductState) && compositeProductName ? true : false);
     }
 
@@ -36,10 +37,6 @@ function Add() {
         setIsValid(compositeProductName ? true : false);
     }, [compositeProductName]);
     
-    useEffect(() => {
-        console.log('addStatus', addStatus);
-    }, [addStatus]);
-
     const handleOnCancelClick = () => {
         history.push('/');
     }

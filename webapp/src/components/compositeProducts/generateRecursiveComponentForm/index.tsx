@@ -19,7 +19,13 @@ const GenerateRecursiveComponentForm = (props: any) => {
             quantity: 0,
             productId: ''
         };
-        setComponents(Object.keys(components[0]).length === 0 ? [item] : [...components, item]);
+
+        setComponents(
+            typeof components[0] !== 'undefined' &&
+                Object.keys(components[0]).length === 0
+                ? [item]
+                : [...components, item]
+        );
     }
 
     const addGroup = () => {
@@ -28,7 +34,13 @@ const GenerateRecursiveComponentForm = (props: any) => {
             name: '',
             components: []
         };
-        setComponents(Object.keys(components[0]).length === 0 ? [item] : [...components, item]);;
+        
+        setComponents(
+            typeof components[0] !== 'undefined' &&
+                Object.keys(components[0]).length === 0
+                ? [item]
+                : [...components, item]
+        );;
     }
 
     const handleOnNameChange = (e: any) => {
@@ -36,7 +48,10 @@ const GenerateRecursiveComponentForm = (props: any) => {
     }
 
     useEffect(() => {
-        if (Object.keys(components[0]).length > 0) {
+        if (
+            typeof components[0] !== 'undefined' &&
+            Object.keys(components[0]).length > 0
+        ) {
             data.components = components;
             props.onChange(data);
         }
@@ -55,7 +70,6 @@ const GenerateRecursiveComponentForm = (props: any) => {
     const handleOnSelectChange = (e: any, key: number) => {
         data.components[key].productId = e.target.value;
         props.onChange(data);
-
     }
 
     const handleOnNumberChange = (e: any, key: number) => {
@@ -73,6 +87,17 @@ const GenerateRecursiveComponentForm = (props: any) => {
         e.target.value = '';
     }
 
+    const handleOnProductDelete = (key: number) => {
+        delete components[key];
+        setComponents(components.filter((item: any) => {
+            console.log('item', item);
+            return item != null;
+        }));
+        data.components = components;
+        console.log('components.length', components.length);
+        props.onChange(data);
+    }
+
     return (
         <div className="m-2 p-3 card">
             {components.length > 0 ? components.map((item: any, key: number) => {
@@ -84,6 +109,7 @@ const GenerateRecursiveComponentForm = (props: any) => {
                             defaultQuantity={item.quantity}
                             onSelectChange={(e: any) => handleOnSelectChange(e, key)}
                             onNumberChange={(e: any) => handleOnNumberChange(e, key)}
+                            onProductDelete={() => handleOnProductDelete(key)}
                         />
                     );
                 } else if (item.type === 'GROUP') {

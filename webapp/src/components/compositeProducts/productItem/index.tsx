@@ -52,7 +52,10 @@ const ProductItem = (props: any) => {
                     />
                 </div>
                 <div className="col-md-1 text-right">
-                    <Button label="X" className="btn btn-danger" />
+                    <Button
+                        onClick={() => props.onProductDelete()}
+                        label="X"
+                        className="btn btn-danger" />
                 </div>
             </div>
             <div className="row">

@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should take a snapshot 1`] = `
+<body>
+  <div>
+    <div
+      class="p-1 m-2 alert alert-danger"
+      data-testid="validation-msg"
+    />
+  </div>
+</body>
+`;

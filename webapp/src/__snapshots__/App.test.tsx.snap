@@ -21,7 +21,9 @@ exports[`should take a snapshot 1`] = `
               <div
                 class="text-left"
               >
-                <h3>
+                <h3
+                  data-testid="title"
+                >
                   List Composite Products
                 </h3>
                 <div

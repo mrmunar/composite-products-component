@@ -25,10 +25,13 @@
     "typescript": "~3.7.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=4000 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "node ../api_server/bin/www",
+    "client": "npm run start",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -46,6 +49,8 @@
     ]
   },
   "devDependencies": {
+    "concurrently": "^5.2.0",
     "react-test-renderer": "^16.13.1"
-  }
+  },
+  "proxy": "http://localhost:5000"
 }

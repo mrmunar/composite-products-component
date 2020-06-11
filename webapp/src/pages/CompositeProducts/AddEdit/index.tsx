@@ -59,10 +59,6 @@ function AddEdit(props: any) {
         }
     }, [dispatch, props]);
     
-    const handleOnCancelClick = () => {
-        history.push('/');
-    }
-
     const handleOnSaveClick = () => {
         if (isValid) {
             if (!props.match.params.id) {
@@ -70,9 +66,9 @@ function AddEdit(props: any) {
             } else {
                 dispatch(editCompositeProduct(props.match.params.id, compositeProductState));
             }
+        
+            setTimeout(() => history.push('/'), 2000);
         }
-
-        setTimeout(() => history.push('/'), 2000);
     }
 
     return (

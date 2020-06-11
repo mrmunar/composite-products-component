@@ -8,6 +8,7 @@ exports[`should take a snapshot 1`] = `
     >
       <div
         class="main-container"
+        data-testid="main-container"
       >
         <div
           class="row justify-content-center"
@@ -20,6 +21,7 @@ exports[`should take a snapshot 1`] = `
             >
               <div
                 class="text-left"
+                data-testid="list-container"
               >
                 <h3
                   data-testid="title"

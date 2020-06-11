@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should take a snapshot 1`] = `
+<body>
+  <div>
+    <div
+      class="m-2 p-3 card"
+    >
+      ProductItem
+      <div
+        class="mt-2"
+        data-testid="group-container"
+      >
+        <div>
+          Group Label
+        </div>
+        <div
+          class="row"
+        >
+          <div
+            class="col-sm-8 text-left"
+          >
+            <input
+              class="form-control"
+              data-testid="input-text"
+              type="text"
+              value="Test Group"
+            />
+          </div>
+          <div
+            class="col-sm-4 text-right"
+          >
+            <button
+              class="btn btn-danger"
+              data-testid="button"
+            >
+              X
+            </button>
+          </div>
+        </div>
+        <div
+          class="m-2 p-3 card"
+        >
+          <div
+            class="mb-2 mt-2"
+          >
+            <select
+              class="custom-select"
+              data-testid="select"
+            >
+              <option
+                value=""
+              >
+                (Add +)
+              </option>
+              <option
+                value="add-product"
+              >
+                Add Product
+              </option>
+              <option
+                value="add-group"
+              >
+                Add Group
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div
+        class="mb-2 mt-2"
+      >
+        <select
+          class="custom-select"
+          data-testid="select"
+        >
+          <option
+            value=""
+          >
+            (Add +)
+          </option>
+          <option
+            value="add-product"
+          >
+            Add Product
+          </option>
+          <option
+            value="add-group"
+          >
+            Add Group
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+</body>
+`;

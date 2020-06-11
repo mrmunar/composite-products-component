@@ -26,7 +26,7 @@ const List = () => {
     }, [compositeProducts]);
 
     return (
-        <div className="text-left">
+        <div className="text-left" data-testid="list-container">
             <Title>List Composite Products</Title>
             <div className="mb-3">
                 <Button label="Create" onClick={() => history.push('/add')} className="btn btn-info" />

@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should take a snapshot 1`] = `
+<body>
+  <div>
+    <div
+      data-testid="add-edit-container"
+    >
+      <div>
+        Name
+      </div>
+      <input
+        class="form-control"
+        style="width: 50%;"
+        type="text"
+        value="Example 1"
+      />
+      GenerateRecursiveComponentForm
+      <div
+        class="text-right"
+      >
+        <button
+          class="btn save-btn mr-2"
+          data-testid="button"
+        >
+          Save
+        </button>
+        <button
+          class="btn cancel-btn"
+          data-testid="button"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</body>
+`;

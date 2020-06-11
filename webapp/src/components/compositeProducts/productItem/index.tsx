@@ -33,10 +33,10 @@ const ProductItem = (props: any) => {
 
     return (
         products.length > 0 ?
-        <div className="container">
-            <div>Product</div>
+            <div className="container">
+                <div>Product</div>
                 <div className="row">
-                    <div className="col-md-8">
+                    <div className="col-md-8" data-testid="select-container">
                         <Select
                             data={products}
                             defaultValue={props.defaultItemValue}
@@ -51,21 +51,23 @@ const ProductItem = (props: any) => {
                             onChange={(e: any) => props.onNumberChange(e)}
                             className="form-control"
                             min="1"
+                            data-testid="number-input"
                         />
                     </div>
                     <div className="col-md-1 text-right">
                         <Button
                             onClick={() => props.onProductDelete()}
                             label="X"
-                            className="btn btn-danger" />
+                            className="btn btn-danger"
+                        />
                     </div>
                 </div>
-            <div className="row">
-                <div className="col-12">
-                    <ValidationMessage valid={isValid} message="Please choose a Product" />
+                <div className="row">
+                    <div className="col-12" data-testid="validation-container">
+                        <ValidationMessage valid={isValid} message="Please choose a Product" />
+                    </div>
                 </div>
-            </div>
-        </div> : null
+            </div> : null
     );
 }
 

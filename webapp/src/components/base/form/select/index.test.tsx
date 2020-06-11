@@ -28,4 +28,11 @@ test('can change a value', () => {
     expect(getByTestId('select')).toHaveValue('2');
 });
 
+test('cannot select an item thats not on the list', () => {
+    const { getByTestId } = render(<Select data={testData} onChange={() => { }} value="Test Value" />);
+    fireEvent.change(screen.getByTestId('select'), {
+        target: { value: 10 },
+      });
+    expect(getByTestId('select')).not.toHaveValue(10);
+});
 

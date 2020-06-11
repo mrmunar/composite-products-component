@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should take a snapshot 1`] = `
+<body>
+  <div>
+    <div
+      class="text-left"
+      data-testid="list-container"
+    >
+      <h3
+        data-testid="title"
+      >
+        List Composite Products
+      </h3>
+      <div
+        class="mb-3"
+      >
+        <button
+          class="btn btn-info"
+          data-testid="button"
+        >
+          Create
+        </button>
+      </div>
+      <ul
+        class="list-group"
+        data-testid="list"
+      >
+        <li
+          class="list-group-item"
+          data-testid="list-item"
+        >
+          <a
+            data-testid="list-item-link"
+            href="/efd0dab3-4813-44f0-98bc-ea3366582498"
+          >
+            Example 1
+          </a>
+        </li>
+        <li
+          class="list-group-item"
+          data-testid="list-item"
+        >
+          <a
+            data-testid="list-item-link"
+            href="/0ddaf224-92d0-48c4-b3c3-3c991ff8dd01"
+          >
+            Example 2
+          </a>
+        </li>
+        <li
+          class="list-group-item"
+          data-testid="list-item"
+        >
+          <a
+            data-testid="list-item-link"
+            href="/fdb6b185-2844-429d-888b-f7aa9e714dab"
+          >
+            Example 3
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</body>
+`;

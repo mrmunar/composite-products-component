@@ -76,7 +76,7 @@ function AddEdit(props: any) {
 
     return (
         !loadStatus.isLoading ? 
-        <Fragment>
+        <div data-testid="add-edit-container">
             <div>Name</div>
             <input
                 type="text"
@@ -93,7 +93,7 @@ function AddEdit(props: any) {
                 <Button onClick={() => handleOnSaveClick()}label="Save" className="btn save-btn mr-2" />
                 <Button onClick={() => handleOnCancelClick()} label="Cancel" className="btn cancel-btn" />
             </div>
-        </Fragment> : <div>Loading...</div>
+        </div> : <div>Loading...</div>
     );
 }
 

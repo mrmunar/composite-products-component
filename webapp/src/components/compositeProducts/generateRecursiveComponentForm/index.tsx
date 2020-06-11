@@ -116,7 +116,7 @@ const GenerateRecursiveComponentForm = (props: any) => {
                     );
                 } else if (item.type === 'GROUP') {
                     return (
-                        <div className="mt-2" key={`group-${props.level}-${key}`}>
+                        <div className="mt-2" key={`group-${props.level}-${key}`} data-testid="group-container">
                             <div>Group Label</div>
                             <div className="row">
                                 <div className="col-sm-8 text-left">
@@ -124,13 +124,16 @@ const GenerateRecursiveComponentForm = (props: any) => {
                                         key={`groupname-${props.level}-${key}`}
                                         value={item.label}
                                         onChange={(e: any) => handleOnNameChange(e, key)}
+                                        data-testid="input-text"
                                     />
                                 </div>
                                 <div className="col-sm-4 text-right">
                                     <Button
                                         onClick={() => handleOnDelete(key)}
                                         label="X"
-                                        className="btn btn-danger" />
+                                        className="btn btn-danger"
+                                        data-testid="delete-button"
+                                    />
                                 </div>
                             </div>
                             <GenerateRecursiveComponentForm
@@ -149,6 +152,7 @@ const GenerateRecursiveComponentForm = (props: any) => {
                     data={addActionOptions}
                     defaultLabel="(Add +)"
                     onChange={(e: any) => handleOnSelectActionOptionsChange(e)}
+                    data-testid="select"
                 />
             </div>
         </div>

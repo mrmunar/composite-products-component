@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should take a snapshot 1`] = `
+<body>
+  <div>
+    <div
+      class="container"
+    >
+      <div>
+        Product
+      </div>
+      <div
+        class="row"
+      >
+        <div
+          class="col-md-8"
+          data-testid="select-container"
+        >
+          <select
+            class="custom-select"
+            data-testid="select"
+          >
+            <option
+              value=""
+            >
+              (Select a Product)
+            </option>
+            <option
+              selected=""
+              value="ba7a0995-4193-4589-8150-54a3cef5f2c6"
+            >
+              Table Top Birch 1600x700
+            </option>
+            <option
+              value="94daaf0b-ec73-4052-aba0-9b0c5d502417"
+            >
+              Table Leg Birch 60x60x700
+            </option>
+            <option
+              value="990650ee-ee52-449c-b53e-b55260ff8734"
+            >
+              Stainless Bolt M12x80 Hex
+            </option>
+          </select>
+        </div>
+        <div
+          class="col-md-2 text-right"
+        >
+          <input
+            class="form-control"
+            data-testid="number-input"
+            min="1"
+            type="number"
+            value="1"
+          />
+        </div>
+        <div
+          class="col-md-1 text-right"
+        >
+          <button
+            class="btn btn-danger"
+            data-testid="button"
+          >
+            X
+          </button>
+        </div>
+      </div>
+      <div
+        class="row"
+      >
+        <div
+          class="col-12"
+          data-testid="validation-container"
+        />
+      </div>
+    </div>
+  </div>
+</body>
+`;

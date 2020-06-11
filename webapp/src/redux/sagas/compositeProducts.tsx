@@ -59,11 +59,10 @@ function* addCompositeProductRequest(data: any) {
 }
 
 function* editCompositeProductRequest(data: any) {
-    console.log('saga-data', data);
     try {
         const response = yield editCompositeProduct(data.id, data.data);
 
-        yield put({ type: EDIT_COMPOSITE_PRODUCTS_SUCCESS });
+        yield put({ type: EDIT_COMPOSITE_PRODUCTS_SUCCESS, compositeProduct: response });
         yield getCompositeProductsRequest();
     } catch (error) {
         console.error(error.message);

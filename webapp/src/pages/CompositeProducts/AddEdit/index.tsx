@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -43,7 +43,7 @@ function AddEdit(props: any) {
     useEffect(() => {
         compositeProductState.name = compositeProductName;
         setIsValid(compositeProductName ? true : false);
-    }, [compositeProductName]);
+    }, [compositeProductName, compositeProductState]);
 
     useEffect(() => {
         if (compositeProductRecord) {
@@ -56,7 +56,7 @@ function AddEdit(props: any) {
         if (props.match.params.id) {
             dispatch(getCompositeProduct(props.match.params.id));
         }
-    }, [dispatch]);
+    }, [dispatch, props]);
     
     const handleOnCancelClick = () => {
         history.push('/');

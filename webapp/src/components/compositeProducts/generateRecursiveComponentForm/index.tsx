@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '../../base/form/button';
 import ProductItem from '../productItem';
 import Select from '../../base/form/select';
@@ -48,6 +48,7 @@ const GenerateRecursiveComponentForm = (props: any) => {
         props.onChange(data);
     }
 
+    
     useEffect(() => {
         if (
             typeof components[0] !== 'undefined' &&
@@ -56,6 +57,11 @@ const GenerateRecursiveComponentForm = (props: any) => {
             data.components = components;
             props.onChange(data);
         }
+
+        // Cannot include deps due to recursive nature of this component and
+        // we might get caught in an infinite loop of useEffect triggers
+        
+        // eslint-disable-next-line
     }, [components]);
 
     useEffect(() => {
@@ -146,6 +152,7 @@ const GenerateRecursiveComponentForm = (props: any) => {
                     );
                 }
 
+                return null;
             }) : null}
             <div className="mb-2 mt-2">
                 <Select

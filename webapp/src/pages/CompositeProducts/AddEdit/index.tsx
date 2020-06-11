@@ -42,6 +42,7 @@ function AddEdit(props: any) {
 
     useEffect(() => {
         compositeProductState.name = compositeProductName;
+
         setIsValid(compositeProductName ? true : false);
     }, [compositeProductName, compositeProductState]);
 
@@ -71,7 +72,7 @@ function AddEdit(props: any) {
             }
         }
 
-        setTimeout(() => history.push('/'), 3000);
+        setTimeout(() => history.push('/'), 2000);
     }
 
     return (
@@ -91,7 +92,7 @@ function AddEdit(props: any) {
             <ValidationMessage valid={isValid} message="Please fill up all required fields" />
             <div className="text-right">
                 <Button onClick={() => handleOnSaveClick()}label="Save" className="btn save-btn mr-2" />
-                <Button onClick={() => handleOnCancelClick()} label="Cancel" className="btn cancel-btn" />
+                <Button onClick={() => history.push('/')} label="Cancel" className="btn cancel-btn" />
             </div>
         </div> : <div>Loading...</div>
     );

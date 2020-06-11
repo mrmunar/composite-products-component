@@ -16,7 +16,7 @@ const GenerateRecursiveComponentForm = (props: any) => {
     const addProduct = () => {
         const item = {
             type: 'PRODUCT',
-            quantity: 0,
+            quantity: 1,
             productId: ''
         };
 
@@ -60,7 +60,7 @@ const GenerateRecursiveComponentForm = (props: any) => {
 
         // Cannot include deps due to recursive nature of this component and
         // we might get caught in an infinite loop of useEffect triggers
-        
+
         // eslint-disable-next-line
     }, [components]);
 
